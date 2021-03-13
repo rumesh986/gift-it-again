@@ -15,6 +15,7 @@
 //	along with gift-it-again.  If not, see <https://www.gnu.org/licenses/>.
 
 Listings myListings = Listings();
+Listings recommendations = Listings();
 
 class Suggestions
 {
@@ -64,6 +65,11 @@ class Listings
     data[(data.length - 1).toString()]["origin"] = origin;
     data[(data.length - 1).toString()]["completed"] = true;
     //print(data);
+  }
+
+  void getRecommendations(Map listing)
+  {
+    
   }
 }
 
