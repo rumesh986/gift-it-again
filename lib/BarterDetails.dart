@@ -18,24 +18,79 @@ import 'package:flutter/material.dart';
 import 'Summary.dart';
 import 'DataStructures.dart';
 
-class BarterDetails extends StatelessWidget {
+class BarterDetails extends StatefulWidget {
 
-  final Listings myListings;
-  final Map current;
+  Listing current;
 
-  BarterDetails({this.myListings,this.current});
+  BarterDetails({this.current});
+
+  @override
+  _BarterDetailsState createState() => _BarterDetailsState();
+}
+
+class _BarterDetailsState extends State<BarterDetails> {
+
+  List<Widget> searchParams = [
+      Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: TextField(
+          decoration: InputDecoration.collapsed(hintText: "Enter the Name"),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: TextField(
+          decoration: InputDecoration.collapsed(hintText: "Enter the Category"),
+        ),
+      ),
+   ];
+
+  bool search = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Barter Details"),
+        actions: [
+          IconButton(
+            onPressed: (){
+              search = true;
+              print(search);
+              setState(() {});
+            },
+            icon:Icon(Icons.search),
+          ),
+        ],
       ),
-      body: Container(
-
+      body: Column(
+        children: [
+          Expanded(
+            flex: 1,
+            child: ListView.builder(itemBuilder: (context, index) 
+              {
+                if(search && index < searchParams.length)
+                {
+                  return searchParams[index];
+                }
+                else
+                  return null;
+              }
+            ),
+          ),
+          Expanded(
+            flex:3,
+            child: ListView(
+              children: [
+                Text("here be recommendations"),
+                Text("here be suggestions"),
+              ],
+            ),
+          )
+        ],
       ),
       floatingActionButton: ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(current: current,myListings: myListings,)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(current: widget.current)));
             },
             child: Text("Done"),),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

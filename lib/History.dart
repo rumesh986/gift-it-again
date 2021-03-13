@@ -28,9 +28,7 @@ class History extends StatelessWidget {
     )
   ];
 
-  final Listings myListings;
-
-  History({this.myListings});
+  History();
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +54,7 @@ class History extends StatelessWidget {
                 if (index < myListings.data.length) {
                   return InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Details(data: myListings.data[index.toString()])));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Details(data: myListings.data[index])));
                     },
                     child: Container(
                       height: MediaQuery.of(context).size.height*0.1,
@@ -65,13 +63,12 @@ class History extends StatelessWidget {
                         children: [
                           Expanded(
                               child: Text(
-                                  myListings.data[num.toString()]["photo"])),
+                                  myListings.data[num].photo)),
                           Expanded(
-                              child: Text(myListings.data[num.toString()]
-                                  ["description"])),
+                              child: Text(myListings.data[num].description)),
                           Expanded(
                               child: Text(
-                                  myListings.data[num.toString()]["origin"])),
+                                  myListings.data[num].origin)),
                         ],
                       )),
                     ),

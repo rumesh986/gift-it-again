@@ -20,16 +20,15 @@ import 'BarterDetails.dart';
 import 'DataStructures.dart';
 
 class AddListing extends StatefulWidget {
-  final Listings myListings;
 
-  AddListing({this.myListings});
+  AddListing();
 
   @override
   _AddListingState createState() => _AddListingState();
 }
 
 class _AddListingState extends State<AddListing> {
-  Map current = {};
+  Listing current  = Listing();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,7 @@ class _AddListingState extends State<AddListing> {
 						child: IconButton(
 							icon: Icon(Icons.add_a_photo),
 							iconSize: MediaQuery.of(context).size.width / 5,
-							onPressed: () => current["photo"] = "Bleh",
+							onPressed: () => current.photo = "Bleh",
 						),
 					),
 					Padding(
@@ -54,7 +53,7 @@ class _AddListingState extends State<AddListing> {
 								labelText: "Enter the name of the product here"
 							),
 							onChanged: (value) {
-								current["title"] = value;
+								current.title = value;
 							},
 						),
 					),
@@ -65,7 +64,7 @@ class _AddListingState extends State<AddListing> {
 								labelText: "Enter the description of the product here"
 							),
 							onChanged: (value) {
-								current["title"] = value;
+								current.title = value;
 							},
 						),
 					),
@@ -80,11 +79,11 @@ class _AddListingState extends State<AddListing> {
 										child: ElevatedButton(
 											child: Text("Barter", style: TextStyle(fontSize: 22),),
 											onPressed: () {
-												current["origin"] = "Barter";
-												current["completed"] = false;
+												current.origin = "Barter";
+												current.completed = false;
 												Navigator.push(
 													context, MaterialPageRoute(
-														builder: (context) => BarterDetails(current: current, myListings: widget.myListings,)
+														builder: (context) => BarterDetails(current: current)
 													)
 												);
 											}
@@ -96,12 +95,12 @@ class _AddListingState extends State<AddListing> {
 									child: Padding(
 										child: ElevatedButton(
 											onPressed: () {
-												current["origin"] = "Giveaway";
-												current["completed"] = false;
+												current.origin = "Giveaway";
+												current.completed = false;
 												Navigator.push(
 													context, 
 													MaterialPageRoute(
-														builder: (context) => Giveaway(current: current, myListings: widget.myListings,)
+														builder: (context) => Giveaway(current: current)
 													)
 												);
 											},

@@ -15,9 +15,10 @@
 //	along with gift-it-again.  If not, see <https://www.gnu.org/licenses/>.
 
 import 'package:flutter/material.dart';
+import 'DataStructures.dart';
 
 class Details extends StatefulWidget {
-  Map data;
+  Listing data;
 
   Details({this.data});
 
@@ -30,9 +31,9 @@ class _DetailsState extends State<Details> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.data["description"]),
+        title: Text(widget.data.title),
         actions: [
-          widget.data["completed"]
+          !widget.data.completed
               ? IconButton(
                   onPressed: () {},
                   icon: Icon(Icons.edit),
@@ -43,6 +44,11 @@ class _DetailsState extends State<Details> {
                 ),
         ],
       ),
+      body: ListView.builder(itemBuilder: (context,index)
+        {
+          return ;
+        }
+      )
     );
   }
 }

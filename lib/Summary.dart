@@ -19,9 +19,8 @@ import 'DataStructures.dart';
 
 class Summary extends StatelessWidget {
 
-  final Map current;
-  final Listings myListings;
-  Summary({this.current, this.myListings});
+  final Listing current;
+  Summary({this.current});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class Summary extends StatelessWidget {
         child: Center(
           child: ElevatedButton(
             onPressed: (){
-              myListings.addListing(current["photo"], current["description"], current["origin"], current["completed"]);
+              myListings.addListing(current);
               Navigator.popUntil(context, ModalRoute.withName('/'));
             },
             child: Text("Done"),

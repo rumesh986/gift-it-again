@@ -15,6 +15,8 @@
 //	along with gift-it-again.  If not, see <https://www.gnu.org/licenses/>.
 
 Listings myListings = Listings();
+Listings recommendations = Listings();
+Listings received = Listings();
 
 class Suggestions
 {
@@ -34,36 +36,56 @@ class Listings
 {
   Listings()
   {
-    this.data = {};
+    //this.data = {};
+    this.data = [];
   }
 
-  Map<String,Map> data;
+  //Map<String,Map> data;
+  List<Listing> data;
   
-  void addListing(String photo, String description, String origin, bool completed)
+  void addListing(Listing listing)
   {
     //print(stuff);
     //data.add(stuff);
     //print(data);
-    data[data.length.toString()] = {};
-    data[(data.length - 1).toString()]["photo"] = photo;
-    data[(data.length - 1).toString()]["description"] = description;
-    data[(data.length - 1).toString()]["origin"] = origin;
-    data[(data.length - 1).toString()]["completed"] = completed;
+    data.add(listing);
     //print(data);
   }
 
-  void addListing1(String origin)
+  // void addListing1(String origin)
+  // {
+  //   //print(stuff);
+  //   //data.add(stuff);
+  //   //print(data.length);
+  //   //print(data);
+  //   data[data.length.toString()] = {};
+  //   data[(data.length - 1).toString()]["photo"] = "${data.length - 1}";
+  //   data[(data.length - 1).toString()]["description"] = "Test ${data.length - 1}";
+  //   data[(data.length - 1).toString()]["origin"] = origin;
+  //   data[(data.length - 1).toString()]["completed"] = true;
+  //   //print(data);
+  // }
+
+  void getRecommendations(Map listing)
   {
-    //print(stuff);
-    //data.add(stuff);
-    //print(data.length);
-    //print(data);
-    data[data.length.toString()] = {};
-    data[(data.length - 1).toString()]["photo"] = "${data.length - 1}";
-    data[(data.length - 1).toString()]["description"] = "Test ${data.length - 1}";
-    data[(data.length - 1).toString()]["origin"] = origin;
-    data[(data.length - 1).toString()]["completed"] = true;
-    //print(data);
+
   }
 }
 
+class Listing
+{
+  String title;
+  String description;
+  String photo;
+  String origin;
+  bool completed;
+
+  Listing()
+  {
+    title = "";
+    description = "";
+    photo = "";
+    origin = "";
+    completed = false;
+  }
+}

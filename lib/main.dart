@@ -16,7 +16,6 @@
 
 import 'package:flutter/material.dart';
 import 'HomePage.dart';
-import 'DataStructures.dart';
 import 'AddListing.dart';
 import 'History.dart';
 import 'Profile.dart';
@@ -40,7 +39,7 @@ class _MyAppState extends State {
 
 	_MyAppState() {
 		_homePage = HomePage();
-		_historyPage = History(myListings: myListings);
+		_historyPage = History();
 		_profilePage = Profile();
 
 		_pages = [
@@ -91,14 +90,16 @@ class _MyAppState extends State {
 					},
 					currentIndex: _selectedIndex,
 				),
-				floatingActionButton: FloatingActionButton(
-					child: Icon(Icons.add),
-					onPressed: () {
-						Navigator.push(
-							context, 
-							MaterialPageRoute(builder: (context) => AddListing(myListings: myListings)),
-						);
-					}
+				floatingActionButton: Builder(
+            builder: (context) => FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () {
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(builder: (context) => AddListing()),
+                );
+              }
+            ),
 				),
 				floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 			)
