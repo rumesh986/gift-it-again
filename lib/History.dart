@@ -68,7 +68,7 @@ class History extends StatelessWidget {
                               child: Text(myListings.data[num].description)),
                           Expanded(
                               child: Text(
-                                  myListings.data[num].origin)),
+                                  myListings.data[num].origin.toString())),
                         ],
                       )),
                     ),

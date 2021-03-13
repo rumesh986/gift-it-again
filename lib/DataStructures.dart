@@ -13,6 +13,8 @@
 // 
 //	You should have received a copy of the GNU General Public License
 //	along with gift-it-again.  If not, see <https://www.gnu.org/licenses/>.
+import 'package:flutter/material.dart';
+
 
 Listings myListings = Listings();
 Listings recommendations = Listings();
@@ -72,20 +74,47 @@ class Listings
   }
 }
 
+enum Origin
+{
+  none,
+  barter,
+  giveaway
+} 
+
 class Listing
 {
   String title;
   String description;
   String photo;
-  String origin;
+  Origin origin;
   bool completed;
+  bool isNew; 
+  String location;
+
+  List<String> tags;
 
   Listing()
   {
     title = "";
     description = "";
     photo = "";
-    origin = "";
+    origin = Origin.none;
     completed = false;
+    isNew = true;
+    location = "";
+    tags = [];
+  }
+
+  Widget showData()
+  {
+    return Container(
+      child: Column(
+        children: [
+          Text("Photo:" + this.photo),
+          Text("Description: " + this.description),
+          Text("Location:" + this.location),
+        ],
+      ),
+    );
   }
 }

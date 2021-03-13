@@ -44,11 +44,12 @@ class _DetailsState extends State<Details> {
                 ),
         ],
       ),
-      body: ListView.builder(itemBuilder: (context,index)
-        {
-          return ;
-        }
-      )
+      body: ListView
+        (
+          children: [
+            widget.data.showData(),
+          ]
+        )
     );
   }
 }

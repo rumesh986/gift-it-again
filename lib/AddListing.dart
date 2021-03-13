@@ -89,7 +89,7 @@ class _AddListingState extends State<AddListing> {
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
-                  current.origin = "Barter";
+                  current.origin = Origin.barter;
                   current.completed = false;
                   //widget.myListings.addListing1("Barter");
                   Navigator.push(
@@ -113,7 +113,7 @@ class _AddListingState extends State<AddListing> {
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
-                  current.origin = "Giveaway";
+                  current.origin = Origin.giveaway;
                   current.completed = false;
                   //widget.myListings.addListing1("Giveaway");
                   Navigator.push(
