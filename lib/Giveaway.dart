@@ -20,10 +20,9 @@ import 'DataStructures.dart';
 
 class Giveaway extends StatelessWidget {
 
-  final Listings myListings;
   final Map current;
 
-  Giveaway({this.myListings, this.current});
+  Giveaway({this.current});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,7 @@ class Giveaway extends StatelessWidget {
             ),
       ),
       floatingActionButton: ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(current:current, myListings: myListings,)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(current:current,)));
             },
             child: Text("Done"),),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

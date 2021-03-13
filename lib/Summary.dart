@@ -20,8 +20,7 @@ import 'DataStructures.dart';
 class Summary extends StatelessWidget {
 
   final Map current;
-  final Listings myListings;
-  Summary({this.current, this.myListings});
+  Summary({this.current});
 
   @override
   Widget build(BuildContext context) {

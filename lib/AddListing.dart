@@ -20,9 +20,8 @@ import 'BarterDetails.dart';
 import 'DataStructures.dart';
 
 class AddListing extends StatefulWidget {
-  final Listings myListings;
 
-  AddListing({this.myListings});
+  AddListing();
 
   @override
   _AddListingState createState() => _AddListingState();
@@ -97,7 +96,7 @@ class _AddListingState extends State<AddListing> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              BarterDetails(current: current, myListings: widget.myListings)));
+                              BarterDetails(current: current)));
                 },
               ),
             ),
@@ -121,7 +120,7 @@ class _AddListingState extends State<AddListing> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              Giveaway(current: current, myListings: widget.myListings)));
+                              Giveaway(current: current)));
                 },
               ),
             ),

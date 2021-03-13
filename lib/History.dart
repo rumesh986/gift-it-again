@@ -27,10 +27,8 @@ class History extends StatelessWidget {
       text: "Received",
     )
   ];
-
-  final Listings myListings;
-
-  History({this.myListings});
+  
+  History();
 
   @override
   Widget build(BuildContext context) {

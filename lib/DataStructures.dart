@@ -49,7 +49,7 @@ class Listings
     data[(data.length - 1).toString()]["description"] = description;
     data[(data.length - 1).toString()]["origin"] = origin;
     data[(data.length - 1).toString()]["completed"] = completed;
-    //print(data);
+    print(data);
   }
 
   void addListing1(String origin)
