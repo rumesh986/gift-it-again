@@ -32,7 +32,7 @@ class _DetailsState extends State<Details> {
       appBar: AppBar(
         title: Text(widget.data["description"]),
         actions: [
-          widget.data["completed"]
+          !widget.data["completed"]
               ? IconButton(
                   onPressed: () {},
                   icon: Icon(Icons.edit),

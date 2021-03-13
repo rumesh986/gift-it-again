@@ -32,7 +32,7 @@ class Summary extends StatelessWidget {
         child: Center(
           child: ElevatedButton(
             onPressed: (){
-              myListings.addListing(current["photo"], current["description"], current["origin"], current["completed"]);
+              myListings.addListing(current);
               Navigator.popUntil(context, ModalRoute.withName('/'));
             },
             child: Text("Done"),

@@ -16,6 +16,7 @@
 
 Listings myListings = Listings();
 Listings recommendations = Listings();
+Listings received = Listings();
 
 class Suggestions
 {
@@ -40,17 +41,14 @@ class Listings
 
   Map<String,Map> data;
   
-  void addListing(String photo, String description, String origin, bool completed)
+  void addListing(Map listing)
   {
     //print(stuff);
     //data.add(stuff);
     //print(data);
     data[data.length.toString()] = {};
-    data[(data.length - 1).toString()]["photo"] = photo;
-    data[(data.length - 1).toString()]["description"] = description;
-    data[(data.length - 1).toString()]["origin"] = origin;
-    data[(data.length - 1).toString()]["completed"] = completed;
-    print(data);
+    data[(data.length - 1).toString()] = listing;
+    //print(data);
   }
 
   void addListing1(String origin)
@@ -69,7 +67,7 @@ class Listings
 
   void getRecommendations(Map listing)
   {
-    
+
   }
 }
 
