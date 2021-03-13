@@ -37,95 +37,82 @@ class _AddListingState extends State<AddListing> {
       appBar: AppBar(
         title: Text("Add Listing"),
       ),
-      body: ListView(
+      body: Column(
         children: [
+					Padding(
+						padding: EdgeInsets.all(5),
+						child: IconButton(
+							icon: Icon(Icons.add_a_photo),
+							iconSize: MediaQuery.of(context).size.width / 5,
+							onPressed: () => current["photo"] = "Bleh",
+						),
+					),
+					Padding(
+						padding: EdgeInsets.all(5),
+						child: TextField(
+							decoration: InputDecoration(
+								labelText: "Enter the name of the product here"
+							),
+							onChanged: (value) {
+								current["title"] = value;
+							},
+						),
+					),
+					Padding(
+						padding: EdgeInsets.all(5),
+						child: TextField(
+							decoration: InputDecoration(
+								labelText: "Enter the description of the product here"
+							),
+							onChanged: (value) {
+								current["title"] = value;
+							},
+						),
+					),
+					Spacer(),
           //1 data entry
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: Container(
-              //color: Colors.black,
-              height: MediaQuery.of(context).size.height / 2,
-              width: MediaQuery.of(context).size.width,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: TextField(
-                          onChanged: (value)
-                          {
-                              current["photo"] = "Bleh";
-                              current["description"] = value; 
-                          },
-                          minLines: 2,
-                          maxLines: 15,
-                          decoration: InputDecoration.collapsed(
-                              hintText:
-                                  "Enter the Description for the product here")),
-                    ),
-                  ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {},
-                      child: Container(
-                          child: Icon(
-                        Icons.add_a_photo,
-                        size: MediaQuery.of(context).size.width / 4,
-                      )),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-
-          //2 barter
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.1,
-              child: ElevatedButton(
-                child: Text(
-                  "Barter",
-                  style: TextStyle(fontSize: 20),
-                ),
-                onPressed: () {
-                  current["origin"] = "Barter";
-                  current["completed"] = false;
-                  //widget.myListings.addListing1("Barter");
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              BarterDetails(current: current, myListings: widget.myListings)));
-                },
-              ),
-            ),
-          ),
-
-          //3 give away
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.1,
-              child: ElevatedButton(
-                child: Text(
-                  "Give to charity",
-                  style: TextStyle(fontSize: 20),
-                ),
-                onPressed: () {
-                  current["origin"] = "Giveaway";
-                  current["completed"] = false;
-                  //widget.myListings.addListing1("Giveaway");
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              Giveaway(current: current, myListings: widget.myListings)));
-                },
-              ),
-            ),
-          ),
+					Container(
+						alignment: Alignment.bottomCenter,
+						child: Row(
+							children: [
+								Expanded(
+									child: Padding(
+										child: ElevatedButton(
+											child: Text("Barter", style: TextStyle(fontSize: 22),),
+											onPressed: () {
+												current["origin"] = "Barter";
+												current["completed"] = false;
+												Navigator.push(
+													context, MaterialPageRoute(
+														builder: (context) => BarterDetails(current: current, myListings: widget.myListings,)
+													)
+												);
+											}
+										),
+										padding: EdgeInsets.all(5),
+									)
+								),
+								Expanded(
+									child: Padding(
+										child: ElevatedButton(
+											onPressed: () {
+												current["origin"] = "Giveaway";
+												current["completed"] = false;
+												Navigator.push(
+													context, 
+													MaterialPageRoute(
+														builder: (context) => Giveaway(current: current, myListings: widget.myListings,)
+													)
+												);
+											},
+											child: Text("Give away", style: TextStyle(fontSize: 22),)
+										),
+										padding: EdgeInsets.all(5),
+									)
+								)
+							],
+						),
+					)
         ],
       ),
     );
