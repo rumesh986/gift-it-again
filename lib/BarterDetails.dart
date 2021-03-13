@@ -5,8 +5,9 @@ import 'DataStructures.dart';
 class BarterDetails extends StatelessWidget {
 
   final Listings myListings;
+  final Map current;
 
-  BarterDetails({this.myListings});
+  BarterDetails({this.myListings,this.current});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +16,9 @@ class BarterDetails extends StatelessWidget {
         title: Text("Barter Details"),
       ),
       body: Container(
+
       ),
-      floatingActionButton: RaisedButton(onPressed: (){
+      floatingActionButton: ElevatedButton(onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(option:"Barter")));
             },
             child: Text("Done"),),

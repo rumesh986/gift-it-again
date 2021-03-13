@@ -17,14 +17,14 @@ class HomePage extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            title: Text("Home"),
+            label: "Home",
             icon: Icon(Icons.home),
           ),
-          BottomNavigationBarItem(title: Text("Home"), icon: Icon(Icons.home)),
+          BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home)),
           BottomNavigationBarItem(
-              title: Text("History"), icon: Icon(Icons.history)),
+              label: "History", icon: Icon(Icons.history)),
           BottomNavigationBarItem(
-              title: Text("Profile"), icon: Icon(Icons.account_circle)),
+              label: "Profile", icon: Icon(Icons.account_circle)),
         ],
         onTap: (index){
           if(index == 0)
