@@ -20,7 +20,7 @@ import 'DataStructures.dart';
 
 class Giveaway extends StatelessWidget {
 
-  final Map current;
+  Listing current;
 
   Giveaway({this.current});
 

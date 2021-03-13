@@ -28,7 +28,7 @@ class AddListing extends StatefulWidget {
 }
 
 class _AddListingState extends State<AddListing> {
-  Map current = {};
+  Listing current  = Listing();
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +53,8 @@ class _AddListingState extends State<AddListing> {
                       child: TextField(
                           onChanged: (value)
                           {
-                              current["photo"] = "Bleh";
-                              current["description"] = value; 
+                              current.photo = "Bleh";
+                              current.description = value; 
                           },
                           minLines: 2,
                           maxLines: 15,
@@ -89,8 +89,8 @@ class _AddListingState extends State<AddListing> {
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
-                  current["origin"] = "Barter";
-                  current["completed"] = false;
+                  current.origin = "Barter";
+                  current.completed = false;
                   //widget.myListings.addListing1("Barter");
                   Navigator.push(
                       context,
@@ -113,8 +113,8 @@ class _AddListingState extends State<AddListing> {
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
-                  current["origin"] = "Giveaway";
-                  current["completed"] = false;
+                  current.origin = "Giveaway";
+                  current.completed = false;
                   //widget.myListings.addListing1("Giveaway");
                   Navigator.push(
                       context,

@@ -19,7 +19,7 @@ import 'DataStructures.dart';
 
 class Summary extends StatelessWidget {
 
-  final Map current;
+  final Listing current;
   Summary({this.current});
 
   @override

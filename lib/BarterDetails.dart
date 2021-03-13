@@ -20,7 +20,7 @@ import 'DataStructures.dart';
 
 class BarterDetails extends StatefulWidget {
 
-  final Map current;
+  Listing current;
 
   BarterDetails({this.current});
 

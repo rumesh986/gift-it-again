@@ -36,34 +36,35 @@ class Listings
 {
   Listings()
   {
-    this.data = {};
+    //this.data = {};
+    this.data = [];
   }
 
-  Map<String,Map> data;
+  //Map<String,Map> data;
+  List<Listing> data;
   
-  void addListing(Map listing)
+  void addListing(Listing listing)
   {
     //print(stuff);
     //data.add(stuff);
     //print(data);
-    data[data.length.toString()] = {};
-    data[(data.length - 1).toString()] = listing;
+    data.add(listing);
     //print(data);
   }
 
-  void addListing1(String origin)
-  {
-    //print(stuff);
-    //data.add(stuff);
-    //print(data.length);
-    //print(data);
-    data[data.length.toString()] = {};
-    data[(data.length - 1).toString()]["photo"] = "${data.length - 1}";
-    data[(data.length - 1).toString()]["description"] = "Test ${data.length - 1}";
-    data[(data.length - 1).toString()]["origin"] = origin;
-    data[(data.length - 1).toString()]["completed"] = true;
-    //print(data);
-  }
+  // void addListing1(String origin)
+  // {
+  //   //print(stuff);
+  //   //data.add(stuff);
+  //   //print(data.length);
+  //   //print(data);
+  //   data[data.length.toString()] = {};
+  //   data[(data.length - 1).toString()]["photo"] = "${data.length - 1}";
+  //   data[(data.length - 1).toString()]["description"] = "Test ${data.length - 1}";
+  //   data[(data.length - 1).toString()]["origin"] = origin;
+  //   data[(data.length - 1).toString()]["completed"] = true;
+  //   //print(data);
+  // }
 
   void getRecommendations(Map listing)
   {
@@ -71,3 +72,20 @@ class Listings
   }
 }
 
+class Listing
+{
+  String title;
+  String description;
+  String photo;
+  String origin;
+  bool completed;
+
+  Listing()
+  {
+    title = "";
+    description = "";
+    photo = "";
+    origin = "";
+    completed = false;
+  }
+}
