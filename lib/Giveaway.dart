@@ -23,7 +23,7 @@ class Giveaway extends StatelessWidget {
             ),
       ),
       floatingActionButton: ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(option:"Barter")));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(current:current, myListings: myListings,)));
             },
             child: Text("Done"),),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

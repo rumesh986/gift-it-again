@@ -3,11 +3,17 @@ import 'Giveaway.dart';
 import 'BarterDetails.dart';
 import 'DataStructures.dart';
 
-class AddListing extends StatelessWidget {
+class AddListing extends StatefulWidget {
   final Listings myListings;
+  Map current = {};
 
   AddListing({this.myListings});
 
+  @override
+  _AddListingState createState() => _AddListingState();
+}
+
+class _AddListingState extends State<AddListing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +35,11 @@ class AddListing extends StatelessWidget {
                   Expanded(
                     child: Center(
                       child: TextField(
+                          onChanged: (value)
+                          {
+                              widget.current["photo"] = "Bleh";
+                              widget.current["description"] = value; 
+                          },
                           minLines: 2,
                           maxLines: 15,
                           decoration: InputDecoration.collapsed(
@@ -56,18 +67,20 @@ class AddListing extends StatelessWidget {
             padding: const EdgeInsets.all(15.0),
             child: Container(
               height: MediaQuery.of(context).size.height * 0.1,
-              child: RaisedButton(
+              child: ElevatedButton(
                 child: Text(
                   "Barter",
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
-                  myListings.addListing1("Barter");
+                  widget.current["origin"] = "Barter";
+                  widget.current["completed"] = false;
+                  //widget.myListings.addListing1("Barter");
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              BarterDetails(myListings: myListings)));
+                              BarterDetails(current: widget.current, myListings: widget.myListings)));
                 },
               ),
             ),
@@ -78,18 +91,20 @@ class AddListing extends StatelessWidget {
             padding: const EdgeInsets.all(15.0),
             child: Container(
               height: MediaQuery.of(context).size.height * 0.1,
-              child: RaisedButton(
+              child: ElevatedButton(
                 child: Text(
                   "Give to charity",
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
-                  myListings.addListing1("Giveaway");
+                  widget.current["origin"] = "Giveaway";
+                  widget.current["completed"] = false;
+                  //widget.myListings.addListing1("Giveaway");
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              Giveaway(myListings: myListings)));
+                              Giveaway(current: widget.current, myListings: widget.myListings)));
                 },
               ),
             ),
