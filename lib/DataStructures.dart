@@ -1,4 +1,6 @@
 
+Listings myListings = Listings();
+
 class Suggestions
 {
   Map<String, List<String>> data;
