@@ -32,16 +32,15 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State {
 	List<Widget> _pages;
-	List<String> _titles;
 	HomePage _homePage;
 	History _historyPage;
 	Profile _profilePage;
 
-	int _selectedWidget;
+	int _selectedIndex;
 
 	_MyAppState() {
 		_homePage = HomePage();
-		_historyPage = History();
+		_historyPage = History(myListings: myListings);
 		_profilePage = Profile();
 
 		_pages = [
@@ -51,14 +50,7 @@ class _MyAppState extends State {
 			_profilePage
 		];
 
-		_titles = [
-			"Home",
-			"Home",
-			"History",
-			"Profile"
-		];
-
-		_selectedWidget = 0;
+		_selectedIndex = 0;
 	}
   @override
   Widget build(BuildContext context) {
@@ -69,10 +61,7 @@ class _MyAppState extends State {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
 			home: Scaffold(
-				appBar: AppBar(
-					title: Text(_titles[_selectedWidget])
-				),
-				body: _pages[_selectedWidget],
+				body: _pages[_selectedIndex],
 				bottomNavigationBar: BottomNavigationBar(
 					type: BottomNavigationBarType.fixed,
 					items: [
@@ -95,10 +84,11 @@ class _MyAppState extends State {
 					],
 					onTap: (index) {
 						setState(() =>
-								_selectedWidget = index
+								_selectedIndex = index
 							
 						);
 					},
+					currentIndex: _selectedIndex,
 				),
 				floatingActionButton: FloatingActionButton(
 					child: Icon(Icons.add),

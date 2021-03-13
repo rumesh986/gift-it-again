@@ -22,6 +22,12 @@ Listings a = Listings();
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text("test"),);
+    return Scaffold(
+			appBar: AppBar(
+				title: Text("Home"),
+			),
+			body: Center(child: Text("test"))
+		);
+		
 	}
 }

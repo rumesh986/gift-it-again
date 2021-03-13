@@ -20,6 +20,11 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text("PROFILE"),);
+		return Scaffold(
+			appBar: AppBar(
+				title: Text("Profile")
+			),
+			body: Center(child: Text("PROFILE"),),
+		);
   }
 }
