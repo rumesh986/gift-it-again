@@ -52,6 +52,7 @@ class _MyAppState extends State {
 
 		_selectedIndex = 0;
 	}
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

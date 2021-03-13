@@ -21,7 +21,6 @@ import 'DataStructures.dart';
 
 class AddListing extends StatefulWidget {
   final Listings myListings;
-  Map current = {};
 
   AddListing({this.myListings});
 
@@ -30,6 +29,8 @@ class AddListing extends StatefulWidget {
 }
 
 class _AddListingState extends State<AddListing> {
+  Map current = {};
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,8 +54,8 @@ class _AddListingState extends State<AddListing> {
                       child: TextField(
                           onChanged: (value)
                           {
-                              widget.current["photo"] = "Bleh";
-                              widget.current["description"] = value; 
+                              current["photo"] = "Bleh";
+                              current["description"] = value; 
                           },
                           minLines: 2,
                           maxLines: 15,
@@ -89,14 +90,14 @@ class _AddListingState extends State<AddListing> {
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
-                  widget.current["origin"] = "Barter";
-                  widget.current["completed"] = false;
+                  current["origin"] = "Barter";
+                  current["completed"] = false;
                   //widget.myListings.addListing1("Barter");
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              BarterDetails(current: widget.current, myListings: widget.myListings)));
+                              BarterDetails(current: current, myListings: widget.myListings)));
                 },
               ),
             ),
@@ -113,14 +114,14 @@ class _AddListingState extends State<AddListing> {
                   style: TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
-                  widget.current["origin"] = "Giveaway";
-                  widget.current["completed"] = false;
+                  current["origin"] = "Giveaway";
+                  current["completed"] = false;
                   //widget.myListings.addListing1("Giveaway");
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              Giveaway(current: widget.current, myListings: widget.myListings)));
+                              Giveaway(current: current, myListings: widget.myListings)));
                 },
               ),
             ),
