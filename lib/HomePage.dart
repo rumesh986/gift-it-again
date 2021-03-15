@@ -15,6 +15,8 @@
 //	along with gift-it-again.  If not, see <https://www.gnu.org/licenses/>.
 
 import 'package:flutter/material.dart';
+
+
 import 'DataStructures.dart';
 
 Listings a = Listings();
@@ -26,7 +28,7 @@ class HomePage extends StatelessWidget {
 			appBar: AppBar(
 				title: Text("Home"),
 			),
-			body: Center(child: Text("test"))
+			body: Center(child: Text("Home"))
 		);
 		
 	}

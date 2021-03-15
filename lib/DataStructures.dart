@@ -14,8 +14,11 @@
 //	You should have received a copy of the GNU General Public License
 //	along with gift-it-again.  If not, see <https://www.gnu.org/licenses/>.
 
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 Listings myListings = Listings();
 Listings recommendations = Listings();
@@ -37,22 +40,35 @@ class Suggestions
 
 class Listings
 {
+	bool _flutterFireInit = false;
+	bool _flutterFireError = false;
+  
+	List<Listing> data;
+
   Listings()
   {
-    //this.data = {};
+		initFlutterFire();
     this.data = [];
   }
 
-  //Map<String,Map> data;
-  List<Listing> data;
+	void initFlutterFire() async {
+		try {
+			await Firebase.initializeApp();
+		  _flutterFireInit = true;
+		} catch(e) {
+		  _flutterFireError = true;
+		}
+	}
+
+	Future<void> addData(Map<String, dynamic> obj) {
+		CollectionReference test = FirebaseFirestore.instance.collection('test');
+		return test.add(obj);
+	}
   
   void addListing(Listing listing)
   {
-    //print(stuff);
-    //data.add(stuff);
-    //print(data);
     data.add(listing);
-    //print(data);
+		addData(listing.toMap());
   }
 
   // void addListing1(String origin)
@@ -105,6 +121,19 @@ class Listing
     location = "";
     tags = [];
   }
+
+	Map<String, dynamic> toMap() {
+		return {
+			"title": title,
+			"description": description,
+			"photo": photo,
+			"origin": origin.index,
+			"completed": completed,
+			"isNew": isNew,
+			"location": location,
+			"tags": tags
+		};
+	}
 
   Widget showData()
   {

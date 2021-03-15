@@ -1,3 +1,4 @@
 build/
 .dart_tool/
 .packages
+android/app/goog-services.json
