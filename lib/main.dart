@@ -21,6 +21,7 @@ import 'History.dart';
 import 'Profile.dart';
 
 void main() {
+	WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
