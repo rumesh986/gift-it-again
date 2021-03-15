@@ -18,10 +18,13 @@ import 'package:flutter/material.dart';
 import 'Giveaway.dart';
 import 'BarterDetails.dart';
 import 'DataStructures.dart';
+import 'Watson_API.dart';
 
 class AddListing extends StatefulWidget {
-
-  AddListing();
+	WatsonNLP watson;
+  AddListing() {
+		watson = WatsonNLP();
+	}
 
   @override
   _AddListingState createState() => _AddListingState();
@@ -65,6 +68,10 @@ class _AddListingState extends State<AddListing> {
 							),
 							onChanged: (value) {
 								current.description = value;
+							},
+							onEditingComplete: () {
+								print(current.description);
+								widget.watson.getTags(current.description);
 							},
 						),
 					),
