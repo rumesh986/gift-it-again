@@ -54,7 +54,7 @@ class History extends StatelessWidget {
                 if (index < myListings.data.length) {
                   return InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Details(data: myListings.data[index])));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Details(data: myListings.data[num])));
                     },
                     child: Container(
                       height: MediaQuery.of(context).size.height*0.1,
