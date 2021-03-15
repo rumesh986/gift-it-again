@@ -42,7 +42,7 @@ class _AddListingState extends State<AddListing> {
       body: Column(
         children: [
 					Padding(
-						padding: EdgeInsets.all(5),
+						padding: EdgeInsets.all(1),
 						child: IconButton(
 							icon: Icon(Icons.add_a_photo),
 							iconSize: MediaQuery.of(context).size.width / 5,
@@ -75,7 +75,19 @@ class _AddListingState extends State<AddListing> {
 							},
 						),
 					),
-					Spacer(),
+          Padding(
+						padding: EdgeInsets.all(5),
+						child: TextField(
+							decoration: InputDecoration(
+								labelText: "Enter any tags for the product",
+                hintText: "Comma seperated values pls"
+							),
+							onSubmitted: (value) {
+                current.tags.addAll(value.split(','));
+							},
+						),
+					),
+          Spacer(),
           //1 data entry
 					Container(
 						alignment: Alignment.bottomCenter,

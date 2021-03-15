@@ -28,17 +28,34 @@ class Summary extends StatelessWidget {
       appBar: AppBar(
         title: Text("Summary"),
       ),
-      body: Container(
-        child: Center(
-          child: ElevatedButton(
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "Listing to be submitted:",
+              style: TextStyle(fontSize: 24),
+            ),
+          ),
+          Container(child:current.showData()),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "Interests indicated:",
+              style: TextStyle(fontSize: 24),
+            ),
+          ),
+          Card(child:current.showData()), //TODO make a interests object for the info and show
+        ],
+      ),
+      floatingActionButton: ElevatedButton(
             onPressed: (){
               myListings.addListing(current);
               Navigator.popUntil(context, ModalRoute.withName('/'));
             },
             child: Text("Done"),
           ),
-        ),
-      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

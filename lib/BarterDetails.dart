@@ -54,9 +54,8 @@ class _BarterDetailsState extends State<BarterDetails> {
         title: Text("Barter Details"),
         actions: [
           IconButton(
-            onPressed: (){
+            onPressed: () {
               search = true;
-              print(search);
               setState(() {});
             },
             icon:Icon(Icons.search),
@@ -66,20 +65,15 @@ class _BarterDetailsState extends State<BarterDetails> {
       body: Column(
         children: [
           Expanded(
-            flex: 1,
-            child: ListView.builder(itemBuilder: (context, index) 
-              {
-                if(search && index < searchParams.length)
-                {
-                  return searchParams[index];
-                }
-                else
-                  return null;
-              }
-            ),
+            flex: (search) ? 1 : 0,
+            child: (search) ? searchParams[0] : Container(width: 0, height: 0,),
           ),
           Expanded(
-            flex:3,
+            flex: (search) ? 1 : 0,
+            child: (search) ? searchParams[1] : Container(width: 0, height: 0,),
+          ),
+          Expanded(
+            flex:7,
             child: ListView(
               children: [
                 Text("here be recommendations"),

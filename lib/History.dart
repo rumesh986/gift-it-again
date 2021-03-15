@@ -81,7 +81,31 @@ class History extends StatelessWidget {
           Container(
             child: ListView.builder(
               itemBuilder: (context, index) {
-                return null;
+                var num = received.data.length - index - 1;
+                if (index < received.data.length) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Details(data: received.data[num])));
+                    },
+                    child: Container(
+                      height: MediaQuery.of(context).size.height*0.1,
+                      child: Card(
+                          child: Row(
+                        children: [
+                          Expanded(
+                              child: Text(
+                                  received.data[num].photo)),
+                          Expanded(
+                              child: Text(received.data[num].description)),
+                          Expanded(
+                              child: Text(
+                                  received.data[num].origin.toString())),
+                        ],
+                      )),
+                    ),
+                  );
+                } else
+                  return null;
               },
             ),
           ),
