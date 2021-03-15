@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" group="android" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="android/app" />
+      <module fileurl="file:///opt/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.16.0+1/android/cloud_firestore.iml" filepath="/opt/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.16.0+1/android/cloud_firestore.iml" group="android/cloud_firestore" />
+      <module fileurl="file:///opt/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.7.0/android/firebase_core.iml" filepath="/opt/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.7.0/android/firebase_core.iml" group="android/firebase_core" />
+    </modules>
+  </component>
+</project>
