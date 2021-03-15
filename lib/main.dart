@@ -75,7 +75,7 @@ class _MyAppState extends State {
 							icon: Icon(Icons.home),
 						),
 						BottomNavigationBarItem(
-							label: "History",
+							label: "Submissions",
 							icon: Icon(Icons.history)
 						),
 						BottomNavigationBarItem(

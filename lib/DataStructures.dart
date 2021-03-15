@@ -14,11 +14,8 @@
 //	You should have received a copy of the GNU General Public License
 //	along with gift-it-again.  If not, see <https://www.gnu.org/licenses/>.
 
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 
 Listings myListings = Listings();
 Listings recommendations = Listings();
@@ -40,35 +37,22 @@ class Suggestions
 
 class Listings
 {
-	bool _flutterFireInit = false;
-	bool _flutterFireError = false;
-  
-	List<Listing> data;
-
   Listings()
   {
-		initFlutterFire();
+    //this.data = {};
     this.data = [];
   }
 
-	void initFlutterFire() async {
-		try {
-			await Firebase.initializeApp();
-		  _flutterFireInit = true;
-		} catch(e) {
-		  _flutterFireError = true;
-		}
-	}
-
-	Future<void> addData(Map<String, dynamic> obj) {
-		CollectionReference test = FirebaseFirestore.instance.collection('test');
-		return test.add(obj);
-	}
+  //Map<String,Map> data;
+  List<Listing> data;
   
   void addListing(Listing listing)
   {
+    //print(stuff);
+    //data.add(stuff);
+    //print(data);
     data.add(listing);
-		addData(listing.toMap());
+    //print(data);
   }
 
   // void addListing1(String origin)
@@ -122,19 +106,6 @@ class Listing
     tags = [];
   }
 
-	Map<String, dynamic> toMap() {
-		return {
-			"title": title,
-			"description": description,
-			"photo": photo,
-			"origin": origin.index,
-			"completed": completed,
-			"isNew": isNew,
-			"location": location,
-			"tags": tags
-		};
-	}
-
   Widget showData()
   {
     return Container(
@@ -147,19 +118,20 @@ class Listing
           Text("Description: " + this.description),
           Text("Location:" + this.location),
           Text("Tags:"),
-          Row(
-            children:[
-              Spacer(),
-              for(var i = 0; i<this.tags.length;i++)
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextButton(
-                    onPressed: (){}, 
-                    child: Text(tags[i]),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+                      child: Row(
+              children:[
+                for(var i = 0; i<this.tags.length;i++)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextButton(
+                      onPressed: (){}, 
+                      child: Text(tags[i]),
+                    ),
                   ),
-                ),
-              Spacer(),
-            ]
+              ]
+            ),
           )
         ],
       ),

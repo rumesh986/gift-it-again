@@ -54,7 +54,10 @@ class _BarterDetailsState extends State<BarterDetails> {
         title: Text("Barter Details"),
         actions: [
           IconButton(
-            onPressed: () => setState(() {}),
+            onPressed: () {
+              search = true;
+              setState(() {});
+            },
             icon:Icon(Icons.search),
           ),
         ],
