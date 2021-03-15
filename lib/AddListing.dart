@@ -64,7 +64,7 @@ class _AddListingState extends State<AddListing> {
 								labelText: "Enter the description of the product here"
 							),
 							onChanged: (value) {
-								current.title = value;
+								current.description = value;
 							},
 						),
 					),

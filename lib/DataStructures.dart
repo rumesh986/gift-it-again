@@ -13,6 +13,7 @@
 // 
 //	You should have received a copy of the GNU General Public License
 //	along with gift-it-again.  If not, see <https://www.gnu.org/licenses/>.
+
 import 'package:flutter/material.dart';
 
 
@@ -116,5 +117,21 @@ class Listing
         ],
       ),
     );
+  }
+}
+
+class User
+{
+  String name;
+  String bio;
+  int points;
+  bool incentive;
+
+  User()
+  {
+    name = "";
+    bio = "";
+    points = 0;
+    incentive = false;
   }
 }

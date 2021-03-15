@@ -22,9 +22,56 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
 		return Scaffold(
 			appBar: AppBar(
-				title: Text("Profile")
+				title: Text("Profile"),
+        actions: [
+          IconButton(icon: Icon(Icons.edit), onPressed: (){})
+        ],
 			),
-			body: Center(child: Text("PROFILE"),),
+			body: ListView(
+        children: [
+          SizedBox(height: 30,),
+          CircleAvatar(
+            radius: MediaQuery.of(context).size.width * 0.2,
+            child: Text(
+              "DP",
+              style: TextStyle(fontSize: 26),
+              ),
+          ),
+          Column(
+            children: [
+              Text(
+                "Name",
+                style: TextStyle(fontSize: 26),
+              ),
+            ],
+          ),
+          Center(
+            child: Text(
+              "Bio",
+              style: TextStyle(fontSize: 26),
+            ),
+          ),
+          Center(
+            child: Text(
+                " X Points",
+                style: TextStyle(fontSize: 26),
+              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: LinearProgressIndicator(
+              minHeight: 25,
+              value: 0.66,
+            ),
+          ),
+          Center(
+            child: Text(
+                " N points to bleh",
+                style: TextStyle(fontSize: 26),
+              ),
+          ),
+        ],
+      ),
 		);
   }
 }
