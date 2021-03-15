@@ -10,7 +10,7 @@ class WatsonNLP {
 	}
 
 	// List<String> 
-	void getTags(String description) async {
+	Future<List<String>> getTags(String description) async {
 		String url = _baseURL + "/v1/analyze\?version=2020-08-01";
 		String msg = jsonEncode({
 			"text": description,
@@ -21,9 +21,12 @@ class WatsonNLP {
 			}
 		});
 
+    List<String> obtainedTags = [];
+
 		var response = await _client.post(
 			Uri.https(
 				_baseURL, 
+        "/v1/analyze",
 				{
 					"version": "2020-08-01"
 				}
@@ -35,6 +38,10 @@ class WatsonNLP {
 			print(resp.statusCode);
 			print(resp.body);
 			print(resp.request.url);
+
+      jsonDecode(resp.body)["keywords"].forEach((element) => obtainedTags.add(element["text"]));
+      print(obtainedTags);
 		});
+    return obtainedTags;
 	}
 }

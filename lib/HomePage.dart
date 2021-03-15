@@ -19,17 +19,51 @@ import 'package:flutter/material.dart';
 
 import 'DataStructures.dart';
 
-Listings a = Listings();
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
 
-class HomePage extends StatelessWidget {
+class _HomePageState extends State<HomePage> {
+
+  var index = 0;
+   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GestureDetector(
+      onHorizontalDragUpdate: (value){
+          if(value.primaryDelta > 15.0)
+          {
+            //print("swipe");
+            index++;
+          }
+          else if(value.primaryDelta < -15.0)
+          {
+            //print("swipe");
+            index--;
+          }
+
+          if(index == myListings.data.length)
+          {
+            index = 0;
+          }
+
+          if(index < 0)
+          {
+            index = myListings.data.length - 1;
+          }
+          //print(index);
+          setState(() {});
+      },
+      child: Scaffold(
 			appBar: AppBar(
 				title: Text("Home"),
 			),
-			body: Center(child: Text("Home"))
-		);
+			body: Container(
+			  child: (myListings.data.isNotEmpty) ? myListings.data[index].showData() :null,
+			)
+		),
+    );
 		
 	}
 }
