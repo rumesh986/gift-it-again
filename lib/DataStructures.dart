@@ -111,9 +111,27 @@ class Listing
     return Container(
       child: Column(
         children: [
-          Text("Photo:" + this.photo),
+          Container(
+            height: 400,
+            child: Center(child: Text("Photo:" + this.photo))
+          ),
           Text("Description: " + this.description),
           Text("Location:" + this.location),
+          Text("Tags:"),
+          Row(
+            children:[
+              Spacer(),
+              for(var i = 0; i<this.tags.length;i++)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextButton(
+                    onPressed: (){}, 
+                    child: Text(tags[i]),
+                  ),
+                ),
+              Spacer(),
+            ]
+          )
         ],
       ),
     );
