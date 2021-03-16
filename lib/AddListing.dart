@@ -32,6 +32,7 @@ class AddListing extends StatefulWidget {
 
 class _AddListingState extends State<AddListing> {
   Listing current  = Listing();
+  Listing nlpTags = Listing();
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +72,39 @@ class _AddListingState extends State<AddListing> {
 							},
 							onEditingComplete: () {
 								print(current.description);
-								widget.watson.getTags(current.description).then((value) => current.tags.addAll(value));
+								widget.watson.getTags(current.description).then((value) {
+                  nlpTags.tags.addAll(value); 
+                  setState(() {});
+                });
 							},
 						),
 					),
+          (nlpTags.tags.isNotEmpty) ? Text("Tags recieved:"): Container(height: 0,width: 0,),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children:[
+                for(var i = 0; i<nlpTags.tags.length;i++)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FilterChip(
+                      onSelected: (value){
+                        if(value)
+                        {
+                          if(!current.tags.contains(nlpTags.tags[i]))
+                            current.tags.add(nlpTags.tags[i]);
+                        }
+                        else
+                        {
+                          current.tags.remove(nlpTags.tags[i]);
+                        }
+                      },
+                      label: Text(nlpTags.tags[i]),
+                    ),
+                  ),
+              ],
+            ),
+          ),
           Padding(
 						padding: EdgeInsets.all(5),
 						child: TextField(

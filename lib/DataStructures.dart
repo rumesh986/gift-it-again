@@ -24,6 +24,7 @@ Listings myListings = Listings();
 Listings recommendations = Listings();
 Listings received = Listings();
 
+
 class Suggestions
 {
   Map<String, List<String>> data;
@@ -154,9 +155,8 @@ class Listing
                 for(var i = 0; i<this.tags.length;i++)
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: TextButton(
-                      onPressed: (){}, 
-                      child: Text(tags[i]),
+                    child: Chip(
+                      label: Text(tags[i]),
                     ),
                   ),
               ],
@@ -184,3 +184,10 @@ class User
   }
 }
 
+class Interests
+{
+  String name;
+  List<String> tags;
+
+  Interests(this.tags, {this.name});
+}
