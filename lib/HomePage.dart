@@ -15,11 +15,6 @@
 //	along with gift-it-again.  If not, see <https://www.gnu.org/licenses/>.
 
 import 'package:flutter/material.dart';
-import 'package:gift_it_again/ChipChoice.dart';
-import 'package:firebase_ml_custom/firebase_ml_custom.dart';
-import 'package:tflite_flutter/tflite_flutter.dart';
-import 'dart:io';
-
 import 'DataStructures.dart';
 
 class HomePage extends StatefulWidget {
@@ -30,46 +25,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   var index = 0;
-	Interpreter interpreter;
-	// var output = List.filled(100,0).reshape([100,1]);
-	// var output = List.filled(1,1);
-	var output = [[]];
 
-	Future<void> _firebaseTest() async {
-		FirebaseCustomRemoteModel remoteModel = FirebaseCustomRemoteModel('test_model');
-		FirebaseModelDownloadConditions conditions = FirebaseModelDownloadConditions(
-			androidRequireWifi: false,
-			androidRequireCharging: false,
-		);
-
-		FirebaseModelManager modelManager = FirebaseModelManager.instance;
-
-		await modelManager.download(remoteModel, conditions);
-
-		var completionBool = await modelManager.isModelDownloaded(remoteModel);
-		while (!completionBool) {
-			sleep(Duration(seconds: 1));
-		}
-		
-		if (await modelManager.isModelDownloaded(remoteModel) == true) {
-			File modelFile = await modelManager.getLatestModelFile(remoteModel);
-
-			modelFile ?? print("NOT NULL");
-
-			print(modelFile.path);
-			try {
-				interpreter = Interpreter.fromFile(modelFile);
-			} catch (e) {
-				print(e);
-			}
-		} else {
-			print("not done yet");
-		}
-	}
-   
   @override
   Widget build(BuildContext context) {
-		_firebaseTest();
     return GestureDetector(
       onHorizontalDragUpdate: (value){
           if(value.primaryDelta > 15.0)
@@ -99,7 +57,8 @@ class _HomePageState extends State<HomePage> {
 			appBar: AppBar(
 				title: Text("Home"),
 			),
-			body: Container(child: Text("HOME"))
+			body: Container(
+				child: (myListings.data.isNotEmpty) ? myListings.data[index].showData() : null
 		),
     );
 		
