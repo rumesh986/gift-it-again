@@ -15,8 +15,6 @@
 //	along with gift-it-again.  If not, see <https://www.gnu.org/licenses/>.
 
 import 'package:flutter/material.dart';
-
-
 import 'DataStructures.dart';
 
 class HomePage extends StatefulWidget {
@@ -27,7 +25,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   var index = 0;
-   
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -60,8 +58,7 @@ class _HomePageState extends State<HomePage> {
 				title: Text("Home"),
 			),
 			body: Container(
-			  child: (myListings.data.isNotEmpty) ? myListings.data[index].showData() :null,
-			)
+				child: (myListings.data.isNotEmpty) ? myListings.data[index].showData() : null
 		),
     );
 		
