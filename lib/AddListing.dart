@@ -71,7 +71,7 @@ class _AddListingState extends State<AddListing> {
 							},
 							onEditingComplete: () {
 								print(current.description);
-								widget.watson.getTags(current.description).then((value) => current.tags.addAll(value));
+								widget.watson.getTags(current.description);
 							},
 						),
 					),
