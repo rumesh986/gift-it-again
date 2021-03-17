@@ -53,7 +53,7 @@ class Profile extends StatelessWidget {
           ),
           Center(
             child: Text(
-                " X Points",
+                "420 Points",
                 style: TextStyle(fontSize: 26),
               ),
           ),
@@ -66,7 +66,7 @@ class Profile extends StatelessWidget {
           ),
           Center(
             child: Text(
-                " N points to bleh",
+                "69 points to completion",
                 style: TextStyle(fontSize: 26),
               ),
           ),

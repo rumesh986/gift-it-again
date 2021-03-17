@@ -59,6 +59,7 @@ class History extends StatelessWidget {
                     child: Container(
                       height: MediaQuery.of(context).size.height*0.1,
                       child: Card(
+                        color: (myListings.data[num].completed) ? Colors.grey : null,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
@@ -94,7 +95,7 @@ class History extends StatelessWidget {
                         children: [
                           Expanded(
                               child: Text(
-                                  received.data[num].photo)),
+                                  received.data[num].title)),
                           Expanded(
                               child: Text(received.data[num].description)),
                           Expanded(

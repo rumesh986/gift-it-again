@@ -40,14 +40,14 @@ class _AddListingState extends State<AddListing> {
       appBar: AppBar(
         title: Text("Add Listing"),
       ),
-      body: Column(
+      body: ListView(
         children: [
 					Padding(
 						padding: EdgeInsets.all(1),
 						child: IconButton(
 							icon: Icon(Icons.add_a_photo),
 							iconSize: MediaQuery.of(context).size.width / 5,
-							onPressed: () => current.photo = "Bleh",
+							onPressed: () {},
 						),
 					),
 					Padding(
@@ -129,7 +129,7 @@ class _AddListingState extends State<AddListing> {
               ),
             ],
           ),
-          Spacer(),
+          SizedBox(height:210),
           //1 data entry
 					Container(
 						alignment: Alignment.bottomCenter,

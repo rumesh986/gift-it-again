@@ -15,6 +15,8 @@
 //	along with gift-it-again.  If not, see <https://www.gnu.org/licenses/>.
 
 import 'package:flutter/material.dart';
+
+
 import 'DataStructures.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,42 +27,67 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   var index = 0;
-
+   
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onHorizontalDragUpdate: (value){
-          if(value.primaryDelta > 15.0)
-          {
-            //print("swipe");
-            index++;
-          }
-          else if(value.primaryDelta < -15.0)
-          {
-            //print("swipe");
-            index--;
-          }
-
-          if(index == myListings.data.length)
-          {
-            index = 0;
-          }
-
-          if(index < 0)
-          {
-            index = myListings.data.length - 1;
-          }
-          //print(index);
-          setState(() {});
-      },
-      child: Scaffold(
+    return Scaffold(
 			appBar: AppBar(
 				title: Text("Home"),
 			),
 			body: Container(
-				child: (myListings.data.isNotEmpty) ? myListings.data[index].showData() : null
-		),
-    );
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.height,
+			  child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+			    children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text("Giveaway"),
+        ),
+        Expanded(
+          child: GestureDetector(
+            onHorizontalDragUpdate: (value){
+              if(value.primaryDelta > 15.0)
+                index++;
+              else if(value.primaryDelta < -15.0)
+                index--;
+              if(index == myListings.data.length)
+                index = 0;
+              if(index < 0)
+                index = myListings.data.length - 1;
+              setState(() {});
+            },
+            child: (myListings.data.isNotEmpty) ? 
+            myListings.data[index].showData(half: true) 
+            : Container(height: 0,width: 0,),
+          )
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text("Barter"),
+        ),
+        Expanded(
+          child: GestureDetector(
+            onHorizontalDragUpdate: (value){
+              if(value.primaryDelta > 15.0)
+                index++;
+              else if(value.primaryDelta < -15.0)
+                index--;
+              if(index == myListings.data.length)
+                index = 0;
+              if(index < 0)
+                index = myListings.data.length - 1;
+              setState(() {});
+            },
+            child: (myListings.data.isNotEmpty) ? 
+            myListings.data[index].showData(half: true) 
+            : Container(child:Center(child: Text("No barters"))),
+          ),
+        ),
+      ]
+			  ),
+			)
+		);
 		
 	}
 }

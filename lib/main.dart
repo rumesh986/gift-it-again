@@ -19,6 +19,7 @@ import 'HomePage.dart';
 import 'AddListing.dart';
 import 'History.dart';
 import 'Profile.dart';
+import 'Settings.dart';
 
 void main() {
 	WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +36,7 @@ class _MyAppState extends State {
 	HomePage _homePage;
 	History _historyPage;
 	Profile _profilePage;
+  Settings _settingsPage;
 
 	int _selectedIndex;
 
@@ -42,12 +44,14 @@ class _MyAppState extends State {
 		_homePage = HomePage();
 		_historyPage = History();
 		_profilePage = Profile();
+    _settingsPage = Settings();
+
 
 		_pages = [
 			_homePage,
 			_historyPage,
 			_profilePage,
-      _homePage
+      _settingsPage
 		];
 
 		_selectedIndex = 0;

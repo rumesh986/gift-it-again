@@ -21,6 +21,7 @@ import 'DataStructures.dart';
 class Giveaway extends StatelessWidget {
 
   Listing current;
+  String selectedCharity;
 
   Giveaway({this.current});
 
@@ -33,13 +34,25 @@ class Giveaway extends StatelessWidget {
       body: Container(
         child: ListView.builder(
               itemBuilder: (context, index) {
-                return null;
+                return InkWell(
+                  onTap:(){
+                    selectedCharity = "Charity Name " + index.toString();
+                  },
+                  child: Card(
+                    child:Container(
+                      height: MediaQuery.of(context).size.height * 0.1,
+                      child:Text("Charity Name " + index.toString())
+                    )
+                  ),
+                );
               },
             ),
       ),
       floatingActionButton: ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(current:current,barter: false,)));
+              if(selectedCharity != null)
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(current:current,barter:false, selected: selectedCharity,)));
             },
+
             child: Text("Done"),),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

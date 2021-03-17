@@ -21,7 +21,10 @@ class Summary extends StatelessWidget {
 
   final Listing current;
   final bool barter;
-  Summary({this.current, this.barter});
+  final String selected; 
+  final Interests currInterest;
+
+  Summary({this.current, this.barter, this.selected, this.currInterest});
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +50,20 @@ class Summary extends StatelessWidget {
               style: TextStyle(fontSize: 24),
             ),
           )
-          : Container(height: 0, width: 0,),
-          (this.barter) ? Card(child:interests.showData()) : Container(height: 0, width: 0,), //TODO make a interests object for the info and show
+          : Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "Selected charity:",
+              style: TextStyle(fontSize: 24),
+            ),
+          ),
+          (this.barter) ? Card(child:currInterest.showData()) 
+          : Card(
+            child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(selected),
+            )
+          ), 
           SizedBox(height:60)
         ],
       ),

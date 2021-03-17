@@ -21,6 +21,7 @@ import 'DataStructures.dart';
 class BarterDetails extends StatefulWidget {
 
   Listing current;
+  Interests currInterest = Interests();
 
   BarterDetails({this.current});
 
@@ -49,7 +50,7 @@ class _BarterDetailsState extends State<BarterDetails> {
             child: TextField(
               decoration: InputDecoration.collapsed(hintText: "Enter the Name"),
               onChanged: (value){
-                interests.name = value;
+                widget.currInterest.name = value;
               }
             ),
           ),
@@ -57,22 +58,22 @@ class _BarterDetailsState extends State<BarterDetails> {
             padding: const EdgeInsets.all(15.0),
             child: TextField(
               decoration: InputDecoration.collapsed(hintText: "Enter some tags you'd like to search for"),
-              onSubmitted: (value) => interests.tags.addAll(value.split(" ")),
+              onSubmitted: (value) => widget.currInterest.tags.addAll(value.split(" ")),
             ),
           ),
           Expanded(
             flex:7,
             child: ListView(
               children: [
-                Text("here be recommendations"),
-                Text("here be suggestions"),
+                //Text("here be recommendations"),
+                //Text("here be suggestions"),
               ],
             ),
           )
         ],
       ),
       floatingActionButton: ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(current: widget.current, barter: true,)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(current: widget.current, barter: true,currInterest: widget.currInterest,)));
             },
             child: Text("Done"),),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

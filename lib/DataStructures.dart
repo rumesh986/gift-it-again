@@ -21,22 +21,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Listings myListings = Listings();
-Listings recommendations = Listings();
+Listings recommendationB = Listings();
+Listings recommendationG = Listings();
 Listings received = Listings();
 Interests interests = Interests();
+List<Charity> myCharities;
 
-
-class Suggestions
+class Charity
 {
-  Map<String, List<String>> data;
-  Suggestions()
-  {
-    data = {};
-  }
+  String name;
+  String targets;
 
-  void addSuggestion(String category, String item)
+  Charity()
   {
-    data[category].add(item);
+    name = "";
+    targets = "";
   }
 }
 
@@ -104,7 +103,7 @@ class Listing
 {
   String title;
   String description;
-  String photo;
+  Image photo;
   Origin origin;
   bool completed;
   bool isNew; 
@@ -115,7 +114,7 @@ class Listing
   {
     title = "No title added";
     description = "No description added";
-    photo = "Add Photo here";
+    photo = Image.asset("assets/redonum.jpeg", scale: 10,);
     origin = Origin.none;
     completed = false;
     isNew = true;
@@ -126,7 +125,7 @@ class Listing
 		return {
 			"title": title,
 			"description": description,
-			"photo": photo,
+			//"photo": photo,
 			"origin": origin.index,
 			"completed": completed,
 			"isNew": isNew,
@@ -141,11 +140,20 @@ class Listing
         children: [
           Container(
             height: (half) ? 150 : 400,
-            child: Center(child: Text("Photo:" + this.photo))
+            child: this.photo,
           ),
-          Text("Name: " + this.title),
-          Text("Description: " + this.description),
-          Text("Condition: " + ((this.isNew)? "New":"Used")),
+          Padding(
+            padding: const EdgeInsets.all(2.5),
+            child: Text("Name: " + this.title),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(2.5),
+            child: Text("Description: " + this.description),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(2.5),
+            child: Text("Condition: " + ((this.isNew)? "New":"Used")),
+          ),
           (!half) ? Text("Tags:") : Container(height:0, width:0),
           (!half) ? SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -162,6 +170,7 @@ class Listing
             ),
           )
           : Container(height:0, width:0),
+          SizedBox(height:20),
         ],
       ),
     );
@@ -200,8 +209,14 @@ class Interests
     return Container(
       child: Column(
         children: [
-          Text("Name: " + this.name),
-          Text("Tags:"),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("Name: " + this.name),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: (this.tags.length == 0) ? Text("Tags: No tags provided") :Text("Tags:"),
+          ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
