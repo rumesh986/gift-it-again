@@ -1,3 +1,19 @@
+//	Copyright (C) 2021 Rumesh Sudhaharan, Sridharan Arvind Srinivasan
+//	This file is part of redonum.
+// 
+//	redonum is free software: you can redistribute it and/or modify
+//	it under the terms of the GNU General Public License as published by
+//	the Free Software Foundation, either version 3 of the License, or
+//	(at your option) any later version.
+// 
+//	redonum is distributed in the hope that it will be useful,
+//	but WITHOUT ANY WARRANTY; without even the implied warranty of
+//	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//	GNU General Public License for more details.
+// 
+//	You should have received a copy of the GNU General Public License
+//	along with redonum.  If not, see <https://www.gnu.org/licenses/>.
+
 import 'package:http/http.dart';
 import 'dart:convert';
 
@@ -9,9 +25,7 @@ class WatsonNLP {
 		_client = Client();
 	}
 
-	// List<String> 
 	Future<List<String>> getTags(String description) async {
-		String url = _baseURL + "/v1/analyze\?version=2020-08-01";
 		String msg = jsonEncode({
 			"text": description,
 			"features": {
@@ -23,7 +37,7 @@ class WatsonNLP {
 
     List<String> obtainedTags = [];
 
-		var response = await _client.post(
+		await _client.post(
 			Uri.https(
 				_baseURL, 
         "/v1/analyze",
