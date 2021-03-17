@@ -38,7 +38,7 @@ class Giveaway extends StatelessWidget {
             ),
       ),
       floatingActionButton: ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(current:current,)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(current:current,barter: false,)));
             },
             child: Text("Done"),),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

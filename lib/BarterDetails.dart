@@ -30,47 +30,35 @@ class BarterDetails extends StatefulWidget {
 
 class _BarterDetailsState extends State<BarterDetails> {
 
-  List<Widget> searchParams = [
-      Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: TextField(
-          decoration: InputDecoration.collapsed(hintText: "Enter the Name"),
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: TextField(
-          decoration: InputDecoration.collapsed(hintText: "Enter the Category"),
-        ),
-      ),
-   ];
-
-  bool search = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Barter Details"),
-        actions: [
-          IconButton(
-            onPressed: () {
-              search = true;
-              setState(() {});
-            },
-            icon:Icon(Icons.search),
-          ),
-        ],
       ),
       body: Column(
         children: [
-          Expanded(
-            flex: (search) ? 1 : 0,
-            child: (search) ? searchParams[0] : Container(width: 0, height: 0,),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical:18.0),
+            child: Text(
+              "What would you like to trade with",
+              style: TextStyle(fontSize: 25),),
           ),
-          Expanded(
-            flex: (search) ? 1 : 0,
-            child: (search) ? searchParams[1] : Container(width: 0, height: 0,),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: TextField(
+              decoration: InputDecoration.collapsed(hintText: "Enter the Name"),
+              onChanged: (value){
+                interests.name = value;
+              }
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: TextField(
+              decoration: InputDecoration.collapsed(hintText: "Enter some tags you'd like to search for"),
+              onSubmitted: (value) => interests.tags.addAll(value.split(" ")),
+            ),
           ),
           Expanded(
             flex:7,
@@ -84,7 +72,7 @@ class _BarterDetailsState extends State<BarterDetails> {
         ],
       ),
       floatingActionButton: ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(current: widget.current)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Summary(current: widget.current, barter: true,)));
             },
             child: Text("Done"),),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

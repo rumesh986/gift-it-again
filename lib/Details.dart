@@ -44,11 +44,10 @@ class _DetailsState extends State<Details> {
                 ),
         ],
       ),
-      body: ListView
+      body: SingleChildScrollView
         (
-          children: [
-            widget.data.showData(),
-          ]
+          scrollDirection: Axis.vertical,
+          child: widget.data.showData(half: false),
         )
     );
   }

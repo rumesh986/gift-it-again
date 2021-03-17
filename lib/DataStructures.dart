@@ -23,6 +23,7 @@ import 'package:firebase_core/firebase_core.dart';
 Listings myListings = Listings();
 Listings recommendations = Listings();
 Listings received = Listings();
+Interests interests = Interests();
 
 
 class Suggestions
@@ -107,19 +108,17 @@ class Listing
   Origin origin;
   bool completed;
   bool isNew; 
-  String location;
 
   List<String> tags;
 
   Listing()
   {
-    title = "";
-    description = "";
-    photo = "";
+    title = "No title added";
+    description = "No description added";
+    photo = "Add Photo here";
     origin = Origin.none;
     completed = false;
     isNew = true;
-    location = "";
     tags = [];
   }
 
@@ -131,24 +130,24 @@ class Listing
 			"origin": origin.index,
 			"completed": completed,
 			"isNew": isNew,
-			"location": location,
 			"tags": tags
 		};
 	}
 
-  Widget showData()
+  Widget showData({bool half})
   {
     return Container(
       child: Column(
         children: [
           Container(
-            height: 400,
+            height: (half) ? 150 : 400,
             child: Center(child: Text("Photo:" + this.photo))
           ),
+          Text("Name: " + this.title),
           Text("Description: " + this.description),
-          Text("Location:" + this.location),
-          Text("Tags:"),
-          SingleChildScrollView(
+          Text("Condition: " + ((this.isNew)? "New":"Used")),
+          (!half) ? Text("Tags:") : Container(height:0, width:0),
+          (!half) ? SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children:[
@@ -161,7 +160,8 @@ class Listing
                   ),
               ],
             ),
-          ),
+          )
+          : Container(height:0, width:0),
         ],
       ),
     );
@@ -189,5 +189,35 @@ class Interests
   String name;
   List<String> tags;
 
-  Interests(this.tags, {this.name});
+  Interests()
+  {
+    name = "No name provided";
+    tags = [];
+  }
+
+  Widget showData()
+  {
+    return Container(
+      child: Column(
+        children: [
+          Text("Name: " + this.name),
+          Text("Tags:"),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children:[
+                for(var i = 0; i<this.tags.length;i++)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Chip(
+                      label: Text(tags[i]),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      )
+    );
+  }
 }

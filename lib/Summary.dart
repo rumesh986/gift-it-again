@@ -20,13 +20,14 @@ import 'DataStructures.dart';
 class Summary extends StatelessWidget {
 
   final Listing current;
-  Summary({this.current});
+  final bool barter;
+  Summary({this.current, this.barter});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Summary"),
+        title: Text("Your Listed Item"),
       ),
       body: ListView(
         children: [
@@ -37,15 +38,18 @@ class Summary extends StatelessWidget {
               style: TextStyle(fontSize: 24),
             ),
           ),
-          Container(child:current.showData()),
-          Padding(
+          Card(child:current.showData(half: false)),
+          SizedBox(height:50),
+          (this.barter) ? Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              "Interests indicated:",
+              "Item of interest:",
               style: TextStyle(fontSize: 24),
             ),
-          ),
-          Card(child:current.showData()), //TODO make a interests object for the info and show
+          )
+          : Container(height: 0, width: 0,),
+          (this.barter) ? Card(child:interests.showData()) : Container(height: 0, width: 0,), //TODO make a interests object for the info and show
+          SizedBox(height:60)
         ],
       ),
       floatingActionButton: ElevatedButton(

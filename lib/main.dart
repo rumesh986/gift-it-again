@@ -45,9 +45,9 @@ class _MyAppState extends State {
 
 		_pages = [
 			_homePage,
-			_homePage,
 			_historyPage,
-			_profilePage
+			_profilePage,
+      _homePage
 		];
 
 		_selectedIndex = 0;
@@ -71,22 +71,21 @@ class _MyAppState extends State {
 							icon: Icon(Icons.home),
 						),
 						BottomNavigationBarItem(
-							label: "Home",
-							icon: Icon(Icons.home),
-						),
-						BottomNavigationBarItem(
 							label: "Submissions",
 							icon: Icon(Icons.history)
 						),
 						BottomNavigationBarItem(
 							label: "Profile",
 							icon: Icon(Icons.account_circle)
-						)
+						),
+            BottomNavigationBarItem(
+							label: "Settings",
+							icon: Icon(Icons.settings),
+						),
 					],
 					onTap: (index) {
 						setState(() =>
 								_selectedIndex = index
-							
 						);
 					},
 					currentIndex: _selectedIndex,

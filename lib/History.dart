@@ -59,18 +59,18 @@ class History extends StatelessWidget {
                     child: Container(
                       height: MediaQuery.of(context).size.height*0.1,
                       child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
                           child: Row(
-                        children: [
-                          Expanded(
-                              child: Text(
-                                  myListings.data[num].photo)),
-                          Expanded(
-                              child: Text(myListings.data[num].description)),
-                          Expanded(
-                              child: Text(
-                                  myListings.data[num].origin.toString())),
-                        ],
-                      )),
+                            children: [
+                              Expanded(
+                                  child: Text(
+                                      myListings.data[num].title)),
+                              Expanded(
+                                  child: Text(myListings.data[num].description)),
+                            ],
+                      ),
+                        )),
                     ),
                   );
                 } else

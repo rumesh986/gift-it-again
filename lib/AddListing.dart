@@ -117,6 +117,18 @@ class _AddListingState extends State<AddListing> {
 							},
 						),
 					),
+          Row(
+            children: [
+              Text("New?:"),
+              Checkbox(
+                value: current.isNew, 
+                onChanged: (value){
+                  current.isNew = value;
+                  setState(() {});
+                }
+              ),
+            ],
+          ),
           Spacer(),
           //1 data entry
 					Container(
