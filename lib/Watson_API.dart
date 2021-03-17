@@ -35,10 +35,6 @@ class WatsonNLP {
 				"Authorization": "Basic YXBpa2V5Okh1RzVBSjBrVVQ4elVKSFEwUEVpS1Zia0dwdEU3a0FOelotNW9YcF9CU2s4"
 			}, body: msg
 		).then((resp) {
-			print(resp.statusCode);
-			print(resp.body);
-			print(resp.request.url);
-
       jsonDecode(resp.body)["keywords"].forEach((element) => obtainedTags.add(element["text"]));
       print(obtainedTags);
 		});
